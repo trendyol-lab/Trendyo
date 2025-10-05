@@ -1,135 +1,145 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nurten Anneme Özel 💗</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Özkan İnşaat - Başvuru</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ffc0cb, #ffe4e1);
-      color: #333;
-      background-image: url('https://em-content.zobj.net/source/microsoft-teams/363/teddy-bear_1f9f8.png');
-      background-repeat: repeat;
-      background-size: 100px;
-    }
-    header {
-      text-align: center;
-      padding: 2rem;
-      background-color: rgba(255, 255, 255, 0.7);
-    }
-    header h1 {
-      font-size: 3rem;
-      margin: 0;
-    }
-    .main-emoji {
-      font-size: 5rem;
-      margin-top: 1rem;
-    }
-    .section {
-      max-width: 900px;
-      margin: 2rem auto;
-      background-color: white;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-    .gallery {
-      text-align: center;
-      font-size: 2rem;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-    .special-links {
-      margin-top: 2rem;
-      text-align: center;
-    }
-    .special-links a {
-      background-color: #ff69b4;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      margin: 10px;
-      transition: background-color 0.3s;
-    }
-    .special-links a:hover {
-      background-color: #e0559e;
+    :root{--accent:#2b6cb0;--muted:#f2f2f2}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, Arial, sans-serif;background:#d9d9d9;color:#222}
+    .container{max-width:980px;margin:0 auto;padding:20px}
+
+    /* Hero */
+    .hero{display:flex;flex-direction:column;align-items:center;gap:18px;padding:20px 10px}
+    .hero-card{width:100%;background:white;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08);overflow:hidden}
+    .hero-media{width:100%;height:420px;background:#ccc;display:flex;align-items:center;justify-content:center}
+    .hero-media img{max-width:100%;max-height:100%;display:block}
+    .hero-content{padding:16px;text-align:center}
+    .quote{font-size:18px;color:#444;font-style:italic;margin-top:4px}
+
+    /* Button */
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:white;text-decoration:none;cursor:pointer;border:none}
+
+    /* Form */
+    #appForm{margin-top:22px;background:white;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06);display:none}
+    .form-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+    label{display:block;font-weight:600;margin-bottom:6px}
+    input[type=text],textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd}
+    textarea{min-height:100px}
+    .checkboxes{display:flex;gap:8px;flex-wrap:wrap}
+    .small{font-size:13px;color:#666}
+
+    /* Footer / agreement */
+    .agreement{margin-top:12px;display:flex;align-items:center;gap:10px}
+    .agree-btn{margin-left:auto}
+
+    /* responsive */
+    @media(min-width:720px){
+      .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Nurten Anneme Özel 💗</h1>
-    <p>Sen benim en kıymetli insanımsın 💖 - Kerem</p>
-    <div class="main-emoji">👩‍👦🌼💐🧸</div>
-  </header>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-card">
+        <div class="hero-media">
+          <!-- Kullanıcının gönderdiği görseli aşağıdaki src ile bağladım -->
+          <img src="/mnt/data/73a9b7f6-f750-4565-a8e3-5ececdc75819.png" alt="Gri Sendero / İş Yeri" />
+        </div>
+        <div class="hero-content">
+          <h1>Özkan İnşaat</h1>
+          <p class="quote">"Gece biraz daha uzun, yollar biraz daha yalnız — yine de taş öreriz umut için."</p>
+          <p class="small">(Efkârı söz — isteğe göre değiştirebiliriz)</p>
+          <div style="margin-top:12px">
+            <button class="btn" id="openFormBtn">Özkan İnşaata giriş için tıkla</button>
+          </div>
+        </div>
+      </div>
 
-  <div class="section">
-    <h2>Hakkında 🌸</h2>
-    <p>Canım annem Nurten, sen bu dünyadaki en özel insansın. Varlığın, sevgisiyle büyüttüğün kalbim, her gün sana daha da minnettar. Bu sayfa, sana olan sevgimi ve saygımı küçük de olsa anlatmak için hazırlandı. Gülümsemen her şeye bedel 💖</p>
-  </div>
+      <!-- Form bölümü, butona basınca açılacak -->
+      <form id="appForm" onsubmit="return handleSubmit(event)">
+        <h3>Özkan İnşaat Başvuru Formu</h3>
+        <div class="form-grid">
+          <div>
+            <label for="duration">Geçireceğin süre (örn: 3 ay / 1 yıl)</label>
+            <input type="text" id="duration" name="duration" placeholder="Ne kadar süre çalışmayı düşünüyorsun?" required>
+          </div>
+          <div>
+            <label for="reason">Neden Özkan İnşaat?</label>
+            <input type="text" id="reason" name="reason" placeholder="Kısaca neden bizimle çalışmak istiyorsun?" required>
+          </div>
+        </div>
 
-  <div class="section">
-    <h2>Galeri Hissi 🎨</h2>
-    <div class="gallery">
-      🌷👩‍👦🌞🧸🍰💐🎈🕊️❤️
+        <div style="margin-top:8px">
+          <label>Hangi mesleği istiyorsun?</label>
+          <div class="checkboxes">
+            <label><input type="checkbox" name="trade" value="Duvarcı"> Duvarcı</label>
+            <label><input type="checkbox" name="trade" value="Kalıpçı"> Kalıpçı</label>
+            <label><input type="checkbox" name="trade" value="Demirci"> Demirci</label>
+            <label><input type="checkbox" name="trade" value="Diğer"> Diğer</label>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <label for="notes">Eklemek istediklerin</label>
+          <textarea id="notes" name="notes" placeholder="Varsa deneyimin, notların, telefon vs"></textarea>
+        </div>
+
+        <div class="agreement">
+          <label><input type="checkbox" id="agreeCheckbox"> Özkan İnşaat A.Ş şirketinin sözleşme kurallarını okudum, kabul ediyorum</label>
+          <button type="button" class="btn agree-btn" id="agreeBtn">Kabul Et ve YouTube'a Git</button>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+          <button class="btn" type="submit">Başvuruyu Gönder</button>
+          <button class="btn" type="button" id="resetBtn" style="background:#666">Temizle</button>
+        </div>
+
+        <p id="result" style="margin-top:12px;color:#114;display:none"></p>
+      </form>
+
     </div>
   </div>
-
-  <div class="section">
-    <h2>İçimden Gelenler 📝</h2>
-    <p>Senin yanında büyümek, senin sesinle uyumak, seninle bir ömür geçirmek... Bunlar bana verilmiş en güzel nimetler. Hayatım boyunca ne yaşarsam yaşayayım, senin varlığın hep içimi güçlendirdi. Seni çok seviyorum annem 💌🌙</p>
-  </div>
-
-  <div class="section">
-    <h2>Beraber Geçen Süre ⏳</h2>
-    <p id="time-together">Yükleniyor...</p>
-  </div>
-
-  <div class="section">
-    <h2>Not 📄</h2>
-    <p>Merhaba Nurten annem. Bu sayfayı senin için hazırladım. Tarih 11 Temmuz 2025, saat 23:00. Seni çok seviyorum. Hayatım boyunca bana kattığın her değer için sana minnettarım. Varlığın benim için huzur, sıcaklık, şefkat ve güven demek. 
-    Belki her zaman her şeyi söyleyememişimdir ama bil ki, kalbimde hep sen varsın. Bu sayfa, sana olan sevgimin küçük bir yansıması. Canım annem, iyi ki varsın... 🧸❤️🌹💫</p>
-  </div>
-
-  <div class="section">
-    <h2>🎵 & 🎁 Sürprizler</h2>
-    <div class="special-links">
-      <a href="https://youtube.com/shorts/ZBzhIuiC_a4?si=F4sbbuKT4J0nXC5P" target="_blank">🎶 Şarkıyı Dinle</a>
-      <a href="https://drive.google.com/drive/folders/1A8q-Z0o73_a9Beux76lu-iTN8Nvf7J_X?usp=drive_link" target="_blank">🎁 Sürprizi Aç</a>
-    </div>
-  </div>
-
-  <footer>
-    © 2025 | Kerem tarafından annesi Nurten için hazırlandı 💘🧸
-  </footer>
 
   <script>
-    const startDate = new Date('2009-01-05T00:00:00');
+    const openFormBtn = document.getElementById('openFormBtn');
+    const appForm = document.getElementById('appForm');
+    const agreeBtn = document.getElementById('agreeBtn');
+    const agreeCheckbox = document.getElementById('agreeCheckbox');
+    const result = document.getElementById('result');
+    const resetBtn = document.getElementById('resetBtn');
 
-    function updateTimeTogether() {
-      const now = new Date();
-      let diff = now - startDate;
+    openFormBtn.addEventListener('click', ()=>{
+      appForm.style.display = appForm.style.display === 'block' ? 'none' : 'block';
+      if(appForm.style.display === 'block') appForm.scrollIntoView({behavior:'smooth'});
+    });
 
-      const seconds = Math.floor(diff / 1000) % 60;
-      const minutes = Math.floor(diff / (1000 * 60)) % 60;
-      const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    agreeBtn.addEventListener('click', ()=>{
+      if(!agreeCheckbox.checked){
+        alert('Önce sözleşme kurallarını okudum ve kabul ediyorum kutusunu işaretlemelisin.');
+        return;
+      }
+      // Kullanıcı kabul ettikten sonra istenen YouTube linkine yönlendir
+      window.location.href = 'https://youtube.com/shorts/V8Pxonbomqk?si=FeJ84fmA5uU9MMug';
+    });
 
-      const text = `Seninle geçen: ${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye 💗`;
-      document.getElementById('time-together').textContent = text;
+    function handleSubmit(e){
+      e.preventDefault();
+      const form = new FormData(appForm);
+      const trades = form.getAll('trade');
+      const summary = `Başvuru Alındı. Süre: ${form.get('duration')}. Neden: ${form.get('reason')}. Meslekler: ${trades.join(', ') || 'Belirtilmedi'}. Notlar: ${form.get('notes') || 'Yok'}`;
+      result.textContent = summary;
+      result.style.display = 'block';
+      // Burada sunucu yok; istersen local olarak bir e-posta gönderme veya kaydetme ekleyebilirim.
+      return false;
     }
 
-    updateTimeTogether();
-    setInterval(updateTimeTogether, 1000);
+    resetBtn.addEventListener('click', ()=>{
+      appForm.reset();
+      result.style.display = 'none';
+    });
   </script>
 </body>
 </html>
